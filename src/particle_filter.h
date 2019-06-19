@@ -30,7 +30,7 @@ class ParticleFilter {
 public:
     // Constructor
     // @param num_particles Number of particles
-    ParticleFilter() : num_particles(0), is_initialized(false) {}
+    ParticleFilter() : num_particles(0), is_initialized(false), gen(rd()) {}
 
     // Destructor
     ~ParticleFilter() {}
@@ -116,10 +116,11 @@ private:
     // Number of particles to draw
     int num_particles;
 
-    std::default_random_engine gen;
-
     // Flag, if filter is initialized
     bool is_initialized;
+
+    std::random_device rd;
+    std::default_random_engine gen;
 
     // Vector of weights of all particles
     std::vector<double> weights;
